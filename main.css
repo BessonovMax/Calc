@@ -1,0 +1,102 @@
+:root {
+  --num-bg-color: #7c78806d;
+  --operator-bg-color: #3e3d44;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition-duration: 0.1.25s;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: rgb(63, 73, 82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(250, 235, 215, 0.162);
+  padding: 1.25em;
+}
+
+.calc-wrapper {
+  padding: 0.25em;
+  background-color: #333338;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  gap: 1%;
+  width: clamp(245px, 80%, 350px);
+}
+button {
+  box-shadow: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.secondary {
+  background-color: var(--operator-bg-color);
+  &:hover {
+    background-color: var(--num-bg-color);
+  }
+}
+
+.primary {
+  background-color: var(--num-bg-color);
+  &:hover {
+    background-color: var(--operator-bg-color);
+  }
+}
+
+.equal {
+  background-color: #99ddc8dd;
+  &:hover {
+    background-color: #8ccbb7cd;
+  }
+}
+
+.display-wrapper {
+  height: 3rem;
+  grid-column: 1 / 5;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+  color: whitesmoke;
+}
+
+.operator-symbol {
+  position: absolute;
+  top: 0;
+}
+
+.display {
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 0.25em 0.35em 0.25em 0.25em;
+}
+
+.clear-btn {
+  grid-column: 1 / 4;
+}
