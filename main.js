@@ -44,8 +44,6 @@ function operate(num1, num2, operator) {
 }
 
 document.addEventListener("keydown", (e) => {
-  console.log(e.code);
-  console.log(e.key);
   switch (e.code) {
     case "Digit0":
     case "Numpad0":
@@ -92,11 +90,14 @@ document.addEventListener("keydown", (e) => {
     case "NumpadMultiply":
     case "NumpadDivide":
       operateBtns.forEach((element) => {
-        if (element.value == "division") {
-          element.click();
-        }
-        if (element.value == "multiplication") {
-          element.click();
+        if (element.value === "division") {
+          if (e.code === "NumpadDivide") {
+            element.click();
+          }
+        } else if (element.value === "multiplication") {
+          if (e.code === "NumpadMultiply") {
+            element.click();
+          }
         }
         if (element.textContent === e.key) {
           element.click();
