@@ -10,6 +10,7 @@ let operateBtns = document.querySelectorAll(".operator");
 let clearBtn = document.querySelector(".clear-btn");
 let clearEntryBtn = document.querySelector(".clear-entry-btn");
 let symbol = document.querySelector(".operator-symbol");
+const dotBtn = document.querySelector(".dot");
 
 function addNumbers(a, b) {
   return a + b;
@@ -41,6 +42,26 @@ function operate(num1, num2, operator) {
       return multiplyNumbers(num1, num2);
   }
 }
+
+dotBtn.addEventListener("click", (e) => {
+  if (!firstNum) {
+    firstNum = "0.";
+    display.textContent = firstNum;
+  } else if (firstNum && !operator) {
+    if (!firstNum.includes(".")) {
+      firstNum = firstNum + ".";
+      display.textContent = firstNum;
+    }
+  } else if (!secondNum) {
+    secondNum = "0.";
+    display.textContent = secondNum;
+  } else if (secondNum && operator) {
+    if (!secondNum.includes(".")) {
+      secondNum = secondNum + ".";
+      display.textContent = secondNum;
+    }
+  }
+});
 
 clearBtn.addEventListener("click", () => {
   window.location.reload();
