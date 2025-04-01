@@ -43,6 +43,93 @@ function operate(num1, num2, operator) {
   }
 }
 
+document.addEventListener("keydown", (e) => {
+  console.log(e.code);
+  console.log(e.key);
+  switch (e.code) {
+    case "Digit0":
+    case "Numpad0":
+      numBtns[9].click();
+      break;
+    case "Digit1":
+    case "Numpad1":
+      numBtns[0].click();
+      break;
+    case "Digit2":
+    case "Numpad2":
+      numBtns[1].click();
+      break;
+    case "Digit3":
+    case "Numpad3":
+      numBtns[2].click();
+      break;
+    case "Digit4":
+    case "Numpad4":
+      numBtns[3].click();
+      break;
+    case "Digit5":
+    case "Numpad5":
+      numBtns[4].click();
+      break;
+    case "Digit6":
+    case "Numpad6":
+      numBtns[5].click();
+      break;
+    case "Digit7":
+    case "Numpad7":
+      numBtns[6].click();
+      break;
+    case "Digit8":
+    case "Numpad8":
+      numBtns[7].click();
+      break;
+    case "Digit9":
+    case "Numpad9":
+      numBtns[8].click();
+      break;
+    case "NumpadAdd":
+    case "NumpadSubtract":
+    case "NumpadMultiply":
+    case "NumpadDivide":
+      operateBtns.forEach((element) => {
+        if (element.value == "division") {
+          element.click();
+        }
+        if (element.value == "multiplication") {
+          element.click();
+        }
+        if (element.textContent === e.key) {
+          element.click();
+        }
+      });
+      break;
+    case "NumpadEnter":
+    case "Enter":
+      equalBtn.click();
+      break;
+    case "NumpadDecimal":
+    case "Period":
+      dotBtn.click();
+      break;
+    case "Backspace":
+      if (!secondNum) {
+        firstNum = firstNum.slice(0, -1);
+        if (firstNum === "") {
+          display.textContent = "0";
+        } else {
+          display.textContent = firstNum;
+        }
+      } else if (secondNum) {
+        secondNum = secondNum.slice(0, -1);
+        if (secondNum === "") {
+          display.textContent = "0";
+        } else {
+          display.textContent = secondNum;
+        }
+      }
+      break;
+  }
+});
 plusMinisBtn.addEventListener("click", (e) => {
   if (firstNum && !operator && !gottenResult && display.textContent !== "0") {
     if (firstNum.startsWith("-")) {
