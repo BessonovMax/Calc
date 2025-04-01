@@ -1,6 +1,7 @@
 let firstNum = "";
 let secondNum = "";
 let operator = "";
+let gottenResult = false;
 let display = document.querySelector(".display");
 let equalBtn = document.querySelector(".equal");
 let numBtns = document.querySelectorAll(".number");
@@ -23,7 +24,7 @@ function multiplyNumbers(a, b) {
 function divideNumbers(a, b) {
   return a / b;
 }
-
+/// This function takes two numbers and an operator as arguments and returns the result of the operation.
 function operate(num1, num2, operator) {
   num1 = Number(num1);
   num2 = Number(num2);
@@ -59,6 +60,12 @@ operateBtns.forEach((element) => {
 
 numBtns.forEach((element) => {
   element.addEventListener("click", (e) => {
+    if (gottenResult && !operator) {
+      firstNum = "";
+      secondNum = "";
+      gottenResult = false;
+      symbol.textContent = "";
+    }
     if (!operator) {
       firstNum = firstNum + e.target.value;
       display.textContent = firstNum;
@@ -74,13 +81,19 @@ equalBtn.addEventListener("click", () => {
     secondNum = display.textContent;
   }
   if (firstNum && secondNum && operator) {
+    //check if the user is trying to divide by 0
+    if (operator === "division" && secondNum === "0") {
+      alert("You can't divide by 0!");
+      return;
+    }
     const result = operate(firstNum, secondNum, operator);
     display.textContent = result;
     firstNum = result;
+    gottenResult = true;
+    operator = "";
     symbol.textContent = `${symbol.textContent} ${secondNum} = `;
     secondNum = "";
   } else {
-    /* should to rewrite this logic, like in windows' calculator */
-    throw new Error("you must choose fist number, operator, second number");
+    alert("Please enter a number and an operator!");
   }
 });
