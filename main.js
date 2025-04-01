@@ -11,7 +11,7 @@ let clearBtn = document.querySelector(".clear-btn");
 let clearEntryBtn = document.querySelector(".clear-entry-btn");
 let symbol = document.querySelector(".operator-symbol");
 const dotBtn = document.querySelector(".dot");
-
+const plusMinisBtn = document.querySelector(".plus-minus");
 function addNumbers(a, b) {
   return a + b;
 }
@@ -42,6 +42,26 @@ function operate(num1, num2, operator) {
       return multiplyNumbers(num1, num2);
   }
 }
+
+plusMinisBtn.addEventListener("click", (e) => {
+  if (firstNum && !operator && !gottenResult && display.textContent !== "0") {
+    if (firstNum.startsWith("-")) {
+      firstNum = firstNum.slice(1);
+      display.textContent = firstNum;
+    } else {
+      firstNum = "-" + firstNum;
+      display.textContent = firstNum;
+    }
+  } else if (firstNum && operator && secondNum && display.textContent !== "0") {
+    if (secondNum.startsWith("-")) {
+      secondNum = secondNum.slice(1);
+      display.textContent = secondNum;
+    } else {
+      secondNum = "-" + secondNum;
+      display.textContent = secondNum;
+    }
+  }
+});
 
 dotBtn.addEventListener("click", (e) => {
   if (!firstNum) {
