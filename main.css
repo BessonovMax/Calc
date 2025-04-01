@@ -84,17 +84,19 @@ button {
   align-items: center;
   position: relative;
   color: whitesmoke;
+  padding: 0.25em 0.35em 0.25em 0.25em;
 }
 
 .operator-symbol {
   position: absolute;
-  top: 0;
+  top: -30%;
+  color: rgba(245, 245, 245, 0.662);
+  font-size: 0.75rem;
 }
 
 .display {
   font-size: 2rem;
   font-weight: 700;
-  padding: 0.25em 0.35em 0.25em 0.25em;
 }
 
 .clear-btn {
