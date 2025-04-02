@@ -12,6 +12,8 @@ let clearEntryBtn = document.querySelector(".clear-entry-btn");
 let symbol = document.querySelector(".operator-symbol");
 const dotBtn = document.querySelector(".dot");
 const plusMinisBtn = document.querySelector(".plus-minus");
+const backspaceBtn = document.querySelector(".backspace");
+
 function addNumbers(a, b) {
   return a + b;
 }
@@ -44,6 +46,8 @@ function operate(num1, num2, operator) {
 }
 
 document.addEventListener("keydown", (e) => {
+  console.log(e.code);
+  console.log(e.key);
   switch (e.code) {
     case "Digit0":
     case "Numpad0":
@@ -129,6 +133,24 @@ document.addEventListener("keydown", (e) => {
         }
       }
       break;
+  }
+});
+
+backspaceBtn.addEventListener("click", (e) => {
+  if (!secondNum) {
+    firstNum = firstNum.slice(0, -1);
+    if (firstNum === "") {
+      display.textContent = "0";
+    } else {
+      display.textContent = firstNum;
+    }
+  } else if (secondNum) {
+    secondNum = secondNum.slice(0, -1);
+    if (secondNum === "") {
+      display.textContent = "0";
+    } else {
+      display.textContent = secondNum;
+    }
   }
 });
 plusMinisBtn.addEventListener("click", (e) => {
